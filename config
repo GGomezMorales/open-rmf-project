@@ -1,0 +1,5 @@
+#!/bin/bash
+
+DOCKER_IMAGE_NAME="rmf:latest"
+CONTAINER_NAME="rmf_container"
+ROS_NETWORK="local"
