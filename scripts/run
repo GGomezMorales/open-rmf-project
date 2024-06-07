@@ -7,8 +7,7 @@ xhost +local:
 rocker --nvidia --x11 \
     --name $CONTAINER_NAME \
     --volume /dev/dri \
-    --volume="${PROJECT_ROOT}/open-rmf_ws:/open-rmf_ws" \
+    --volume="${PROJECT_ROOT}/open-rmf_ws/src:/open-rmf_ws/src" \
     --network host \
     --port 443:443 \
     ${DOCKER_IMAGE_NAME}
-
