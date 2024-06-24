@@ -1,10 +1,11 @@
 #!/bin/bash
 
-cd /rmf_demos_ws
+set -e
 
-source /opt/ros/humble/setup.bash
+source /opt/ros/$ROS_DISTRO/setup.bash
+
+cd rmf_demos_ws && colcon build
+
 source /rmf_demos_ws/install/setup.bash
 
-# open https://open-rmf.github.io/rmf-panel-js/
-
-ros2 launch rmf_demos_gz_classic office.launch.xml
+ros2 launch rmf_demos_gz office.launch.xml

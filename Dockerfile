@@ -8,12 +8,12 @@ RUN if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then \
 
 RUN colcon mixin update default
 
-RUN apt-get update && sudo apt install ros-humble-rmf-dev -y
 RUN apt-get update && apt-get install xdg-utils -y 
+RUN apt-get update && apt-get install ros-dev-tools -y
 
-RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 RUN echo "source /rmf_demos_ws/install/setup.bash" >> ~/.bashrc
 
 COPY ./autostart /
 RUN chmod +x /autostart
-ENTRYPOINT /autostart
+# ENTRYPOINT /autostart
