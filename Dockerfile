@@ -10,6 +10,10 @@ RUN colcon mixin update default
 
 RUN apt-get update && apt-get install xdg-utils -y 
 RUN apt-get update && apt-get install ros-dev-tools -y
+RUN apt-get update && apt-get install ros-${ROS_DISTRO}-xacro -y
+RUN apt-get update && apt-get install ros-${ROS_DISTRO}-joint-state-publisher -y
+
+WORKDIR /
 
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 RUN echo "source /rmf_demos_ws/install/setup.bash" >> ~/.bashrc
