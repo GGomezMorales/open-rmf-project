@@ -8,6 +8,8 @@
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>rmf_building_map_tools</buildtool_depend>
+  <buildtool_depend>ros2run</buildtool_depend>
 
   <depend>rclcpp</depend>
   <depend>rmf_traffic</depend>

@@ -25,12 +25,13 @@ endif()
 
 ament_package()
 
-message(NOTICE "Starting Compilation...")
+message(NOTICE "\n")
+message(NOTICE "...STARTING COMPILATION...\n")
 
 file(GLOB_RECURSE traffic_editor_paths "maps/*.building.yaml")
 
 foreach(path ${traffic_editor_paths})
-  message(NOTICE "path: ${path}")
+  message(NOTICE " --- PATH: ${path} --- \n")
 
   # Get the output world name
   string(REGEX REPLACE "\\.[^.]*\.[^.]*$" "" no_extension_path ${path})
@@ -45,16 +46,15 @@ foreach(path ${traffic_editor_paths})
   message(NOTICE "map_path: ${map_path}")
   message(NOTICE "output_world_name: ${output_world_name}")
   message(NOTICE "output_dir: ${output_dir}")
-
   message(NOTICE "output_world_path: ${output_world_path}")
-  message(NOTICE "output_model_dir: ${output_model_dir}")
+  message(NOTICE "output_model_dir: ${output_model_dir}\n")
 
   ##############################################################################
   # Generate Gz world and download Models
   ##############################################################################
 
-  message(NOTICE "BUILDING WORLDFILE WITH COMMAND: ros2 run rmf_building_map_tools building_map_generator gazebo ${map_path} ${output_world_path} ${output_model_dir}")
-  message(NOTICE "....Downloading Models and Building to ${output_model_dir}")
+  message(NOTICE "BUILDING WORLDFILE >>> STARTED")
+  message(NOTICE "Downloading models and building to ${output_model_dir}")
   add_custom_command(
     OUTPUT ${output_world_path}
     COMMAND ros2 run rmf_building_map_tools building_map_generator gazebo ${map_path} ${output_world_path} ${output_model_dir}
@@ -66,10 +66,8 @@ foreach(path ${traffic_editor_paths})
     DEPENDS ${output_world_path}
   )
 
-  message(NOTICE "....Downloading and Building Models to ${output_model_dir} >>>>> DONE")
-
-
-  message(NOTICE "....BUILDING WORLDFILE...DONE")
+  message(NOTICE "Downloading models and building to ${output_model_dir} >>> DONE")
+  message(NOTICE "BUILDING WORLDFILE >>> DONE\n")
 
   ##############################################################################
   # Generate the nav graphs
@@ -77,7 +75,7 @@ foreach(path ${traffic_editor_paths})
 
   set(output_nav_graphs_dir ${output_dir}/nav_graphs/)
   set(output_nav_graphs_phony ${output_nav_graphs_dir}/phony)
-  message(NOTICE "....Generating Lane Graphs in  ${output_nav_graphs_dir}")
+  message(NOTICE "Generating lane graphs in ${output_nav_graphs_dir}")
   add_custom_command(
     OUTPUT ${output_nav_graphs_phony}
     COMMAND ros2 run rmf_building_map_tools building_map_generator nav ${map_path} ${output_nav_graphs_dir}
@@ -93,7 +91,7 @@ foreach(path ${traffic_editor_paths})
     DESTINATION share/${PROJECT_NAME}/maps
   )
 
-  message(NOTICE "....Generating Lane Graphs in  ${output_nav_graphs_dir}...DONE")
+  message(NOTICE "Generating lane graphs in ${output_nav_graphs_dir} >>> DONE\n\n")
 
 endforeach()
 
