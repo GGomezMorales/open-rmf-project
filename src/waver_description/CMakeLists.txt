@@ -29,6 +29,6 @@ endif()
 
 ament_package()
 
-install(DIRECTORY launch rviz urdf meshes param
+install(DIRECTORY launch rviz urdf meshes
   DESTINATION share/${PROJECT_NAME}/
 )

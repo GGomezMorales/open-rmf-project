@@ -1,8 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="waver_utils">
 
+    <!-- Utils -->
     <xacro:property name="triple_zero" value="0 0 0" />
     <xacro:property name="scale" value="0.001 0.001 0.001" />
+    <xacro:property name="floor_to_top" value="88.5e-03" />
+    <xacro:property name="floor_to_base" value="33.7e-03" />
+    <xacro:property name="base_to_top" value="${ floor_to_top - floor_to_base }" />
+    <xacro:property name="length" value="183e-03" />
 
     <!-- Base specifications -->
     <xacro:property name="pos_x_base" value="2.838767506182194e-05" />
@@ -88,5 +93,17 @@
     <xacro:property name="mass_wbr" value="1.0170123141691128" />
     <xacro:property name="mass_center_wbr" value="${pos_x_wbr} ${pos_y_wbr} ${pos_z_wbr}" />
     <xacro:property name="position_wbr" value="${-pos_x_wbr} ${-pos_y_wbr} ${-pos_z_wbr}" />
+
+    <!-- Lidar specifications -->
+    <xacro:property name="mass_lidar" value="0.05" />
+    <xacro:property name="lidar_model" value="HLS-LFCD-LDS" />
+    <xacro:property name="lidar_link" value="lidar_link" />
+    <xacro:property name="lidar_samples" value="720" />
+    <xacro:property name="lidar_max_range" value="12.0" />
+    <xacro:property name="lidar_min_range" value="0.03" />
+    <xacro:property name="lidar_max_angle" value="${pi}" />
+    <xacro:property name="lidar_min_angle" value="-${pi}" />
+    <xacro:property name="lidar_frequency" value="10" />
+    <xacro:property name="lidar_transform" value="0 0 0 0 0 0" />
 
 </robot>
