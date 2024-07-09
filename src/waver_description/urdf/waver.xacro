@@ -5,6 +5,7 @@
   <xacro:include filename="$(find waver_description)/urdf/util.xacro" />
   <xacro:include filename="$(find waver_description)/urdf/waver.trans.xacro" />
   <xacro:include filename="$(find waver_description)/urdf/waver.gazebo.xacro" />
+  <xacro:include filename="$(find waver_description)/urdf/lidar.xacro" />
 
   <!-- ******************************* Links ******************************* -->
 
@@ -21,7 +22,6 @@
       <geometry>
         <mesh filename="package://waver_description/meshes/base_link.stl" scale="${scale}" />
       </geometry>
-      <color rgba="0.1 0.1 0.1 1"/>
       <xacro:dark_gray_material />
     </visual>
     <collision>
@@ -313,4 +313,5 @@
     </plugin>
   </gazebo>
   
+
 </robot>
