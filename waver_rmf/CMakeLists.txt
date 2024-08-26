@@ -96,7 +96,5 @@ foreach(path ${traffic_editor_paths})
 endforeach()
 
 install(DIRECTORY launch rviz maps
-#   models
-#   aseprite_map_drawings
   DESTINATION share/${PROJECT_NAME}
 )

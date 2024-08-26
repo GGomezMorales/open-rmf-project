@@ -8,5 +8,5 @@ source ${PROJECT_ROOT}/config
 rocker --x11 \
     --devices /dev/dri \
     --name=${CONTAINER_NAME} \
-    --volume="${PROJECT_ROOT}/src:/rmf_demos_ws/src" \
+    --volume="${PROJECT_ROOT}:/rmf_demos_ws/src" \
     -- ${DOCKER_IMAGE_NAME}
