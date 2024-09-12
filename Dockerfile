@@ -11,12 +11,15 @@ RUN if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then \
 
 RUN colcon mixin update default
 
-RUN apt-get update && apt-get install xdg-utils -y 
-RUN apt-get update && apt-get install ros-dev-tools -y
-RUN apt-get update && apt-get install ros-${ROS_DISTRO}-xacro -y
-RUN apt-get update && apt-get install ros-${ROS_DISTRO}-joint-state-publisher -y
+RUN apt-get update && apt-get install -y \
+    xdg-utils \
+    ros-dev-tools \
+    ros-${ROS_DISTRO}-xacro \
+    ros-${ROS_DISTRO}-joint-state-publisher \
+    ros-${ROS_DISTRO}-ros-gz-sim
 
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 RUN echo "source ${WS}/devel/setup.bash" >> ~/.bashrc
-RUN echo "alias sros='source /opt/ros/${ROS_DISTRO}/setup.bash ; colcon build ; source ${WS}/install/setup.bash'" >> ~/.bashrc
+RUN echo "alias sros='source /opt/ros/${ROS_DISTRO}/setup.bash && source ${WS}/install/setup.bash'" >> ~/.bashrc
+RUN echo "alias bros='cd ${WS} && colcon build'" >> ~/.bashrc
 

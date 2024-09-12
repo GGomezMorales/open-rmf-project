@@ -95,6 +95,6 @@ foreach(path ${traffic_editor_paths})
 
 endforeach()
 
-install(DIRECTORY launch rviz maps
+install(DIRECTORY launch rviz maps worlds
   DESTINATION share/${PROJECT_NAME}
 )
