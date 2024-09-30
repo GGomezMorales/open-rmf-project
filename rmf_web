@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source /root/.bashrc
+pnpm env use --global lts
+cd ${WS}/src/rmf-web
+pnpm install
