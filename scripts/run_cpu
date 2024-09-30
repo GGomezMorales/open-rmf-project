@@ -7,6 +7,11 @@ source ${PROJECT_ROOT}/config
 
 rocker --x11 \
     --devices /dev/dri \
+    -e RMF_SERVER_URL=http://localhost:8000 \
+    -e TRAJECTORY_SERVER_URL=ws://localhost:8006 \
+    -e ROS_DOMAIN_ID=9 \
+    -e ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST \
+    -e ROS_STATIC_PEERS=192.168.0.1 \
     --name=${CONTAINER_NAME} \
     --volume="${PROJECT_ROOT}:/rmf_demos_ws/src" \
     -- ${DOCKER_IMAGE_NAME}
